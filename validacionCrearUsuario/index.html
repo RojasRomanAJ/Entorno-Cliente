@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="es_ES">
+    <meta charset="UTF-8">
+    <title>VALIDAR FORMULARIO</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="validarformulario.js" cache="false"></script>
+</head>
+<body>
+    <h1>VALIDAR FORMULARIO</h1>
+    <div class="cuadroEjercicio"></div>
+        <form id="form" action="prueba.php" method="POST">
+            <div>
+                <div>
+                    <label for="name">NOMBRE</label>
+                    <input type="text" name="name" id="name">
+                    <div id="erroresNombre" class="error"></div>
+                </div>
+                <p>
+                <div>
+                    <label for="surname">APELLIDOS</label>
+                    <input type="text" name="surname" id="surname">
+                    <div id="erroresApellidos" class="error"></div>
+                    <div id="erroresIgualdad" class="error"></div>
+                </div>
+                <p>
+                <div>
+                    <label for="age">EDAD</label>
+                    <input type="text" name="age" id="age">
+                    <div id="erroresEdad" class="error"></div>
+                </div>
+                <p>
+                <div>
+                    <label for="profesion">PROFESION</label>
+                    <select name="profesion" id="profesion">
+                        <option value="Profesor">Profesor</option>
+                        <option value="Limpiador">Limpiador</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Recepcionista">Recepcionista</option>
+                    </select>
+                </div>
+                <p>
+                <div>
+                    <input type="checkbox" id="politics">¿Aceptar Política de Datos?
+                    <div id="errorCheck" class="error"></div>
+                    <p>
+                    <button type="submit" id="create">CREAR</button>
+                </div>
+            </div>
+        </form>
+
+
+
+</body>
