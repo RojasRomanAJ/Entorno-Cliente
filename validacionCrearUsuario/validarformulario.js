@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function(){
     let inputEdad = document.getElementById("age");
     inputEdad.addEventListener("keyup", validarEdad);
 
+    let inputProfesion = document.getElementById("profesion");
+    inputProfesion.addEventListener("select", validarSelect);
+
     let inputTerminos = document.getElementById("politics");
     inputTerminos.addEventListener("click", comprobarTerminos);
 
@@ -55,6 +58,8 @@ function validarApellidos(event){
     let expresion = /^[a-z A-Z]{4,}$/;
     let inputApellido = document.getElementById("surname");
     let valor = inputApellido.value.trim();
+    let inputNombre = document.getElementById("name");
+    let valor2 = inputNombre.value.trim();
     let listaErrores = document.getElementById("erroresApellidos");
     listaErrores.innerHTML = "";
     inputApellido.classList.remove("inputErroneo");
@@ -66,17 +71,21 @@ function validarApellidos(event){
         divError.innerHTML = "EL CAMPO NO DEBE ESTAR VACÍO";
         listaErrores.appendChild(divError);
     }
-
-    if(expresion.test(valor)){
-        esCorrecto = true;
-        inputApellido.classList.add("inputCorrecto");
-
-    }
     
     if(!expresion.test(valor)){
         esCorrecto = false;
         let divError = document.createElement("div");
         divError.innerHTML = "SOLO DEBEN USARSE LETRAS Y DEBE CONTENER MINIMO 4 LETRAS";
+        listaErrores.appendChild(divError);
+        inputApellido.classList.add("inputErroneo");
+    } else {
+        inputApellido.classList.add("inputCorrecto");
+    }
+
+    if (valor === valor2) {
+        esCorrecto = false;
+        let divError = document.createElement("div");
+        divError.innerHTML = "APELLIDOS NO PUEDE TENER EL MISMO VALOR";
         listaErrores.appendChild(divError);
         inputApellido.classList.add("inputErroneo");
     }
@@ -114,6 +123,29 @@ function validarEdad(event){
     return esCorrecto;
 }
 
+function validarSelect(event){
+    let esCorrecto = true;
+    let inputProfesion = document.getElementById("profesion");
+    let valor = inputProfesion.value.trim();
+    let listaErrores = document.getElementById("erroresSelect");
+    listaErrores.innerHTML = "";
+    inputProfesion.classList.remove("inputErroneo");
+    inputProfesion.classList.remove("inputCorrecto");
+
+    if (valor === "Ninguna") {
+        esCorrecto = false;
+        let divError = document.createElement("div");
+        divError.innerHTML = "DEBE SELECCIONAR UNA PROFESIÓN";
+        listaErrores.appendChild(divError);
+        inputProfesion.classList.add("inputErroneo");
+    } else {
+        esCorrecto = true;
+        inputProfesion.classList.add("inputCorrecto");
+    }
+
+    return esCorrecto;
+}
+
 function comprobarTerminos(event){
     let esCorrecto = false;
     let inputTerminos = document.getElementById("politics");
@@ -138,9 +170,10 @@ function comprobarFormulario(event){
     let esNombreCorrecto = validarNombre(document.getElementById("name"));
     let esApellidoCorrecto = validarApellidos(document.getElementById("surname"));
     let esEdadCorrecta = validarEdad(document.getElementById("age"));
+    let esSelect = validarSelect(document.getElementById("profesion"));
     let sonTerminosCorrectos = comprobarTerminos(document.getElementById("politics"));
 
-    if(esNombreCorrecto && esApellidoCorrecto && esEdadCorrecta && sonTerminosCorrectos){
+    if(esNombreCorrecto && esApellidoCorrecto && esEdadCorrecta && esSelect && sonTerminosCorrectos){
         let formulario = document.getElementById("form");
         formulario.submit();
         alert("EL USUARIO SE HA CREADO CORRECTAMENTE");
