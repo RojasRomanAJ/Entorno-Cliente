@@ -10,7 +10,7 @@
     <body>
         <h1>PROYECTO</h1>
         <div id="exerciseBox">
-            <form action="" id="form">
+            <form action="" id="form" method="POST">
                 <div id="inputName">
                     <label for="name">NOMBRE:</label>
                     <input id="name" type="text" />
@@ -25,12 +25,13 @@
                 <p>
                 <div id="selectType">
                     <label for="select">TIPO:</label>
-                    <select name="select" id="select">
+                    <select id="select">
                         <option value="Ninguno">NINGUNO</option>
-                        <option value="">REDES</option>
-                        <option value="">DESARROLLO</option>
-                        <option value="">ANÁLISIS</option>
-                        <option value="">REFACTOR</option>
+                        <option value="Redes">REDES</option>
+                        <option value="Desarrollo">DESARROLLO</option>
+                        <option value="Análisis">ANÁLISIS</option>
+                        <option value="Refactor">REFACTOR</option>
+                        <div id="selectErrors" class="error"></div>
                     </select>
                 </div>
                 <p>
@@ -41,10 +42,14 @@
                 </div>
                 <p>
                 <div id="checkPersonal">
-                    <label for="personal">BENEFICIOS:</label>
+                    <label for="personal">PERSONAL:</label>
                     <input id="personal" type="checkbox" /> Programador
                     <input id="personal" type="checkbox" /> Analísta
                     <input id="personal" type="checkbox" /> Jefe Proyecto
+                </div>
+                <p>
+                <div>
+                    <button type="submit" id="create">CREAR</button>
                 </div>
             </form>
         </div>
