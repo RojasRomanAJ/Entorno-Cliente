@@ -10,10 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/AJ-Rojas/Entorno-Cliente.git"
   },
-  "author": "Antonio Jesus Rojas Roman",
+  "author": "Antonio Jesus Rojas Roman, Maximo Madrona Duran",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AJ-Rojas/Entorno-Cliente/issues"
   },
-  "homepage": "https://github.com/AJ-Rojas/Entorno-Cliente#readme"
+  "homepage": "https://github.com/AJ-Rojas/Entorno-Cliente#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.7.2",
+    "jsdoc": "^3.6.3"
+  },
+  "dependencies": {
+    "uglify-js": "^3.7.1"
+  }
 }
