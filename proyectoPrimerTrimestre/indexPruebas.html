@@ -8,7 +8,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <script src="class/muebles.js"></script>
+        <script src="scripts/validarBusqueda.js"></script>
     </head>
     <body>
+            <h1>Busqueda</h1>
+            <a href="index.html">Index</a>
+            <a href="gestion.html">Gestion</a>
+            <a href="edicion.html">Edicion</a>
+            <a href="usuario.html">Usuario</a>
+            <p></p>
+            <hr>
+            <p></p>
+            <form id="buscar" action="" method="POST">
+            <div>
+                <label for="tipo">Tipo</label>
+                    <select id = "tipo" name="tipo">
+                        <option value="ninguna">NINGUNA</option>
+                        <option value="armario">ARMARIO</option>
+                        <option value="sillon">SILLON</option>
+                        <option value="mesa">MESA</option>
+                        <option value="silla">SILLA</option>
+                        <option value="divan">DIVAN</option>
+                    </select>
+                    
+                    <div id="erroresTipo">
+        
+            </div>
+            <P></P>
+            <div>
+                <label for="tamanio">Tamaño</label>
+                     <select id = "tamanio" name="tamanio">
+                             <option value="ninguna">NINGUNA</option>
+                            <option value="grande">GRANDE</option>
+                            <option value="mediano">MEDIANO</option>
+                            <option value="pequenio">PEQUENIO</option>
+                        </select>
+                
+                        <div id="erroresTamanio">
+                                
+            </div>
+            <P></P>
+            
+            <button type="submit">BUSCAR</button>
+        
+            </form>  
     </body>
 </html>
