@@ -10,6 +10,89 @@
     <a href="index.html">Index</a>
     <a href="gestion.html">Gestion</a>
     <a href="usuario.html">Usuario</a>
-       
+    <a href="busqueda.html">Busqueda</a> 
+    <hr>
+    <p></p>
+
+    <form action="crear" method="post">
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca"/>
+            <div id="erroresMarca"></div>
+        </div>
+        <p></p>
+        <div>
+            <label for="tamanio">Tamaño</label>
+               <select id = "tamanio" name="tamanio">
+                  <option value="ninguna">NINGUNA</option>
+                  <option value="grande">GRANDE</option>
+                  <option value="mediano">MEDIANO</option>
+                  <option value="pequenio">PEQUENIO</option>
+               </select>
+            
+              <div id="erroresTamanio">
+                            
+        </div>
+        <P></P>
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio"/>
+            <div id="erroresPrecio"></div>
+        </div>
+        <p></p>
+        <div>
+            <label for="tipo">Tipo</label>
+                <select id = "tipo" name="tipo">
+                    <option value="ninguna">NINGUNA</option>
+                    <option value="armario">ARMARIO</option>
+                    <option value="sillon">SILLON</option>
+                    <option value="mesa">MESA</option>
+                    <option value="silla">SILLA</option>
+                    <option value="divan">DIVAN</option>
+                </select>
+                
+                <div id="erroresTipo">
+    
+        </div>
+      <p></p>
+
+     <button type="submit" id="create">Crear</button>   
+    </form>
+
+    <hr>
+
+
+    <form action="modificar" method="POST">
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marcaModificar;"/>
+            <div id="erroresMarcaModificar"></div>
+        </div>
+        <p></p>
+        <div>
+            <label for="tipoModificar">Tipo</label>
+                <select id = "tipo" name="tipoModificar">
+                    <option value="ninguna">NINGUNA</option>
+                    <option value="armario">ARMARIO</option>
+                    <option value="sillon">SILLON</option>
+                    <option value="mesa">MESA</option>
+                    <option value="silla">SILLA</option>
+                    <option value="divan">DIVAN</option>
+                </select>
+                
+                <div id="erroresTipoModificar">
+        </div>
+        <p></p>
+        <div>
+          <label for="precioNuevo">Precio Nuevo:</label>
+          <input type="number" id="precioNuevo"/>
+          <div id="erroresPrecioNuevo"></div>
+
+        </div>
+        <p></p>
+
+    <button type="submit" id="modificar">Modificar</button>     
+    </form>
     </body>
 </html>
+

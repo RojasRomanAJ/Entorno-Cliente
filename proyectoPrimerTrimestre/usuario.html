@@ -10,38 +10,45 @@
     <a href="index.html">Index</a>
     <a href="edicion.html">Edicion</a>
     <a href="gestion.html">Gestion</a>
-    <br>
-    <br>
+    <a href="busqueda.html">Busqueda</a>
+    <hr>
+    <p></p>
     <form action="Formulario" method="post">
         <div>
             <label for="Nombre">Nombre:</label>
             <input type="text" id="nombre" />
+            <div id="erroresNombre"></div>
         </div>
         <p></p>
         <div>
             <label for="Apellido">Apellido:</label>
             <input type="text" id="apellido" />
+            <div id="erroresApellido"></div>
         </div>
         <p></p>
         <div>
             <label for="Direccion">Direccion:</label>
             <input type="text" id="direccion" />
+            <div id="erroresDireccion"></div>
         </div>
         <p></p>
         <div>
             <label for="Usuario">Usuario:</label>
             <input type="text" id="usuario" />
+            <div id="erroresUsuario"></div>
         </div>
         <p></p>
         <div>
             <label for="Password">Contraseña:</label>
             <input type="password" id="password" />
+            <div id="erroresPassword"></div>
         </div>
         <p></p>
 
         <div>
             <label for="mail">E-mail:</label>
             <input type="email" id="correo" />
+            <div id="erroresEmail"></div>
         </div>
         <p></p>
      <button type="submit" id="create">Crear</button>   

@@ -1,0 +1,12 @@
+.inputErroneo{
+    border: 3px solid red;
+    color: black;
+}
+.inputCorrecto{
+    border: 3px solid green;
+    color: black;
+}
+
+.error{
+    color: red;
+}
