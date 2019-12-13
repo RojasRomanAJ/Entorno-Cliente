@@ -3,66 +3,143 @@
 
 document.addEventListener("DOMContentLoaded", function(){
 
-    let inputTipo = document.getElementById("tipo");
-    inputTipo.addEventListener("select", busquedaMueble);
+    crearSelectTipo("selectTipo");
 
-    let inputTamanio = document.getElementById("tamanio");
-    inputTamanio.addEventListener("select", busquedaMueble);
+    crearSelectTamanio("selectTamanio");
 
-    let formulario = document.getElementById("buscar");
+    let selectTipo = document.getElementById("selectTipo");
+    selectTipo.addEventListener("select", validarBusqueda);
+
+    let selectTamanio = document.getElementById("selectTamanio");
+    selectTamanio.addEventListener("select", validarBusqueda);
+
+    crearSelectMuebles("marca");
+
+    let mueblesSimilar = document.getElementById("marca");
+    mueblesSimilar.addEventListener("change", obtenerMueblesSimilares);
+
+    let formulario = document.getElementById("busquedaTipoTamaño");
     formulario.addEventListener("submit", comprobarFormulario);
 
 });
 
-/** Funcion que valida la búsqueda */
-function busquedaMueble(event){
+function crearSelectTipo(idSelectTipo){
+    let select = document.getElementById(idSelectTipo); 
+    for(mueble of listaMuebles){
+        let option = document.createElement("option");
+        option.value = mueble.id;
+        option.innerHTML = mueble.tipo;
+        select.appendChild(option);
+    }
+}
+
+function crearSelectTamanio(idSelectTamanio){
+    let select = document.getElementById(idSelectTamanio); 
+    for(mueble of listaMuebles){
+        let option = document.createElement("option");
+        option.value = mueble.id;
+        option.innerHTML = mueble.tamanio;
+        select.appendChild(option);
+    }
+}
+
+ /**Funcion que valida la búsqueda*/
+function validarBusqueda(event){
     let esCorrecto = true;
-    let inputTipo = document.getElementById("tipo");
-    let valor = inputTipo.value.trim();
-    let inputTamanio = document.getElementById("tamanio");
-    let valor2 = inputTamanio.value.trim();
+    let selectTipo = document.getElementById("selectTipo");
+    let valor = selectTipo.value;
     let listaErrores = document.getElementById("erroresTipo");
+    let selectTamanio = document.getElementById("selectTamanio");
+    let valor2 = selectTamanio.value;
     let listaErrores2 = document.getElementById("erroresTamanio");
     listaErrores.innerHTML = "";
-    inputTipo.classList.remove("inputErroneo");
-    inputTipo.classList.remove("inputCorrecto");
-    inputTamanio.classList.remove("inputCorrecto");
-    inputTamanio.classList.remove("inputCorrecto");
+    listaErrores2.innerHTML = "";
+    selectTipo.classList.remove("inputErroneo");
+    selectTipo.classList.remove("inputCorrecto");
+    selectTamanio.classList.remove("inputCorrecto");
+    selectTamanio.classList.remove("inputErroneo");
 
-    /** Si el valor seleccionado en inputTipo es = "ninguna" muestra error */
-    if (valor === "ninguna") {
+    /** Si el valor seleccionado en selectTipo es = "ninguna" muestra error*/
+    if (valor === " ") {
         esCorrecto = false;
         let divError = document.createElement("div");
         divError.innerHTML = "DEBES ELEGIR UNA OPCIÓN VÁLIDA";
         listaErrores.appendChild(divError);
-        inputTipo.classList.add("inputErroneo");
+        selectTipo.classList.add("inputErroneo");
     } else {
-        inputTipo.classList.add("inputCorrecto");
+        esCorrecto = true;
+        selectTipo.classList.add("inputCorrecto");
     }
 
-    /** Si el valor seleccionado en inputTamanio es = "ninguna" muestra error */
-    if (valor2 === "ninguna") {
+    /** Si el valor seleccionado en selectTamanio es = "ninguna" muestra error*/
+    if (valor2 === " ") {
         esCorrecto = false;
         let divError = document.createElement("div");
         divError.innerHTML = "DEBES ELEGIR UNA OPCIÓN VÁLIDA";
         listaErrores2.appendChild(divError);
-        inputTamanio.classList.add("inputErroneo");
+        selectTamanio.classList.add("inputErroneo");
     } else {
-        inputTamanio.classList.add("inputCorrecto");
+        esCorrecto = true;
+        selectTamanio.classList.add("inputCorrecto");
     }
 
     return esCorrecto;
 }
 
+function crearSelectMuebles(idSelectMueble){
+    let select = document.getElementById(idSelectMueble); 
+    for(mueble of listaMuebles){
+        let option = document.createElement("option");
+        option.value = mueble.id;
+        option.innerHTML = mueble.marca;
+        select.appendChild(option);
+    }
+}
+
+function obtenerMueblesSimilares(event) {
+    let selectMarca = document.getElementById("marca");
+    let idMarcaSeleccionada = selectMarca.value;
+    let ulMueblesSimilares = document.getElementById("muebles_similares");
+    ulMueblesSimilares.innerHTML = "";
+    let spanTipoMueble = document.getElementById("titulo_marca");
+    spanTipoMueble.innerHTML = "";
+
+    if (idMarcaSeleccionada !== ""){
+        let mueblesMostrados = 0;
+        let muebleSeleccionado = listaMuebles.find(muebles => muebles.id === parseInt(idMarcaSeleccionada));
+        spanTipoMueble.innerHTML = `${muebleSeleccionado.marca} (${muebleSeleccionado.tipo}-${muebleSeleccionado.tamanio})`;
+
+        let mueblesSimilares = listaMuebles
+                                .filter(muebles => muebles.tipo !== muebleSeleccionado.tipo)
+                                .filter(muebles => muebles.tamanio === muebleSeleccionado.tamanio)
+                                .filter(muebles => muebles.id !== muebleSeleccionado.id)
+        
+        mueblesSimilares.forEach(function(muebleSimilar){
+            let liMueble = document.createElement("li");
+            liMueble.innerHTML = `${muebleSimilar.marca} (${muebleSimilar.tipo}-${muebleSimilar.tamanio})`;
+            ulMueblesSimilares.appendChild(liMueble);
+            mueblesMostrados++;
+        });
+
+        if (mueblesMostrados == 0){
+            let liMueble = document.createElement("li");
+            liMueble.innerHTML = "NO SE HAN ENCONTRADO MUEBLES SIMILARES";
+            ulMueblesSimilares.appendChild(liMueble);
+        }
+    }
+}
+
+
 function comprobarFormulario(event){
     event.preventDefault();
-    let esTipoCorrecto = busquedaMueble(document.getElementById("tipo"));
-    let esTamanioCorrecto = busquedaMueble(document.getElementById("tamanio"));
+    let esTipoCorrecto = validarBusqueda(document.getElementById("selectTipo"));
+    let esTamanioCorrecto = validarBusqueda(document.getElementById("selectTamanio"));
 
     if(esTipoCorrecto && esTamanioCorrecto){
         let formulario = document.getElementById("buscar");
         formulario.submit();
-        alert("EL USUARIO SE HA CREADO CORRECTAMENTE");
+        event.preventDefault();
+        //alert("EL USUARIO SE HA CREADO CORRECTAMENTE");
     }else {
         alert("ERROR EN EL FORMULARIO");
     }

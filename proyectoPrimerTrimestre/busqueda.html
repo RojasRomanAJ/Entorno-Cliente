@@ -3,7 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>Busqueda</title>
-        <link rel="stylesheet" href="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="estilos.css">
+        <script src="class/muebles.js"></script>
+        <script src="scripts/validarBusqueda.js"></script>
     </head>
     <body>
       <h1>Busqueda</h1>
@@ -14,39 +17,47 @@
     <p></p>
     <hr>
     <p></p>
-    <form id="buscar" action="" method="POST">
-    <div>
-        <label for="tipo">Tipo</label>
-            <select id = "tipo" name="tipo">
-                <option value="ninguna">NINGUNA</option>
-                <option value="armario">ARMARIO</option>
-                <option value="sillon">SILLON</option>
-                <option value="mesa">MESA</option>
-                <option value="silla">SILLA</option>
-                <option value="divan">DIVAN</option>
-            </select>
-            
-            <div id="erroresTipo">
-
-    </div>
-    <P></P>
-    <div>
-        <label for="tamanio">Tamaño</label>
-             <select id = "tamanio" name="tamanio">
-                     <option value="ninguna">NINGUNA</option>
-                    <option value="grande">GRANDE</option>
-                    <option value="mediano">MEDIANO</option>
-                    <option value="pequenio">PEQUENIO</option>
+    <h2>BÚSQUEDA POR TIPO Y TAMAÑO</h2>
+        <form id="busquedaTipoTamaño" action="">
+            <div>
+                <label for="tipo">tipo</label>
+                <select id="selectTipo">
+                    <option value=" "></option>
                 </select>
-        
-                <div id="erroresTamanio">
-                        
-    </div>
-    <P></P>
-    
-    <button type="submit">BUSCAR</button>
-
-    </form>  
-
+                <div id="erroresTipo" class="error"></div>
+            </div>
+            <p></p>
+            <div>
+                <label for="tamanio">tamaño</label>
+                <select id="selectTamanio">
+                    <option value=" "></option>
+                </select>
+                <div id="erroresTamanio" class="error"></div>
+            </div>
+            <p></p>
+            <button type="submit" id="buscar">BUSCAR</button>
+            <p></p>
+            <div>
+                <h3>RESULTADO:</h3>
+                <ul id="resultadoBusqueda">
+                </ul>
+            </div>
+        </form>
+        <p></p>
+        <hr>
+        <h2>BÚSQUEDA SIMILAR POR MARCA (siendo similares por tamaño)</h2>
+        <div>
+            <h3>Selecciona marca</h3>
+            <select id = "marca">
+                <option value=""></option>
+            </select>    
+            <div id="erroresMarca" class="error"></div>
+        </div>
+        <p></p>
+        <div>
+            <h2>MUEBLES SIMILARES A: <span id="titulo_marca"></span></h2>
+            <ul id="muebles_similares">
+            </ul>
+        </div>  
     </body>
 </html>

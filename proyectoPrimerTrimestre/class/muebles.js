@@ -1,13 +1,22 @@
 class Muebles {
-    constructor(marca, tamanio, precio, tipo){
+    constructor(id, marca, tamanio, precio, tipo){
+        this._id = id;
         this._marca = marca;
         this._tamanio = tamanio;
         this._precio = precio;
         this._tipo = tipo;
     }
 
+    get id(){
+        return this._id;
+    }
+
+    set id(id){
+        this._id = id;
+    }
+
     get marca(){
-        return $this._marca;
+        return this._marca;
     }
 
     set marca(marca){
@@ -40,33 +49,68 @@ class Muebles {
 
 }
 
-let mueble1 = new Muebles("Gucci", "mediano", "200€", "armario");
-console.log(mueble1);
-let mueble2 = new Muebles("Louis-Vuiton", "pequenio", "150€", "armario");
-console.log(mueble2);
-let mueble3 = new Muebles("Supreme", "grande", "2000€", "armario");
-console.log(mueble3);
-let mueble4 = new Muebles("Louis-Vuiton", "grande", "300€", "sillon");
-console.log(mueble4);
-let mueble5 = new Muebles("Silk-sill", "pequenio", "90€", "sillon");
-console.log(mueble5);
-let mueble6 = new Muebles("Gucci", "mediano", "150€", "sillon");
-console.log(mueble6);
-let mueble7 = new Muebles("Silk-sill", "mediano", "780€", "mesa");
-console.log(mueble7);
-let mueble8 = new Muebles("Supreme", "grande", "320€", "mesa");
-console.log(mueble8);
-let mueble9 = new Muebles("Gucci", "pequenio", "20€", "mesa");
-console.log(mueble9);
-let mueble10 = new Muebles("Gucci", "mediano", "1200€", "silla");
-console.log(mueble10);
-let mueble11 = new Muebles("Louis-Vuiton", "grande", "260€", "silla");
-console.log(mueble11);
-let mueble12 = new Muebles("Supreme", "grande", "420€", "silla");
-console.log(mueble12);
-let mueble13 = new Muebles("Silk-sill", "pequenio", "352€", "divan");
-console.log(mueble13);
-let mueble14 = new Muebles("Supreme", "mediano", "769€", "divan");
-console.log(mueble14);
-let mueble15 = new Muebles("Louis-Vuiton", "pequenio", "465€", "divan");
-console.log(mueble15);
+let armario1 = new Muebles(1, "GRÄLVIKEN", "mediano", "200€", "armario");
+let silla2 = new Muebles(2, "STOCKHOLM", "grande", "260€", "silla");
+let mesa3 = new Muebles(3, "LIATORP", "pequenio", "20€", "mesa");
+let sillon2 = new Muebles(4, "HAVSTA", "pequenio", "90€", "sillon");
+let divan2 = new Muebles(5, "LISTERBY", "mediano", "769€", "divan");
+let sillon3 = new Muebles(6, "EKET", "mediano", "150€", "sillon");
+let mesa2 = new Muebles(7, "MALSJÖ", "grande", "320€", "mesa");
+let armario2 = new Muebles(8, "MORUM", "pequenio", "150€", "armario");
+let silla1 = new Muebles(9, "HEMNES", "mediano", "1200€", "silla");
+let sillon1 = new Muebles(10, "JOKKMOKK", "grande", "300€", "sillon");
+let mesa1 = new Muebles(11, "KALLAX", "mediano", "780€", "mesa");
+let silla3 = new Muebles(12, "ARKELSTORP", "pequenio", "420€", "silla");
+let divan1 = new Muebles(13, "REGISSÖR", "pequenio", "352€", "divan");
+let armario3 = new Muebles(14, "MALM", "grande", "2000€", "armario");
+let divan3 = new Muebles(15, "FRIHETEN", "pequenio", "465€", "divan");
+let balda1 = new Muebles(16, "FLOTTEBO", "grande", "985€", "balda");
+let listaMuebles = [];
+
+listaMuebles.push(armario1);
+armario1.id = listaMuebles.length;
+
+listaMuebles.push(silla2);
+silla2.id = listaMuebles.length;
+
+listaMuebles.push(mesa3);
+mesa3.id = listaMuebles.length;
+
+listaMuebles.push(sillon2);
+sillon2.id = listaMuebles.length;
+
+listaMuebles.push(divan2);
+divan2.id = listaMuebles.length;
+
+listaMuebles.push(sillon3);
+sillon3.id = listaMuebles.length;
+
+listaMuebles.push(mesa2);
+mesa2.id = listaMuebles.length;
+
+listaMuebles.push(armario2);
+armario2.id = listaMuebles.length;
+
+listaMuebles.push(silla1);
+silla1.id = listaMuebles.length;
+
+listaMuebles.push(sillon1);
+sillon1.id = listaMuebles.length;
+
+listaMuebles.push(mesa1);
+mesa1.id = listaMuebles.length;
+
+listaMuebles.push(silla3);
+silla3.id = listaMuebles.length;
+
+listaMuebles.push(divan1);
+divan1.id = listaMuebles.length;
+
+listaMuebles.push(armario3);
+armario3.id = listaMuebles.length;
+
+listaMuebles.push(divan3);
+divan3.id = listaMuebles.length;
+
+listaMuebles.push(balda1);
+balda1.id = listaMuebles.length;
