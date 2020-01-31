@@ -1,16 +1,26 @@
 <?php
 
-header('Cache-Control: no-cache, must-revalidate');
-header("Content-Type: text/xml; charset=utf-8");
-
 $servidor = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "tienda_muebles";
 
-$conn = new PDO("mysql:host=$servidor;dbname=$baseDatos", $usuario, $password);
-$conn->exec("set names utf8");
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$stmt = $conn->prepare("SELECT marca, tipo, disponibilidad, descripcion FROM muebles WHERE tipo LIKE '%".$_GET['tipo']."%'");
-$stmt->execute();
-$muebles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$conn = mysqli_connect($servidor, $usuario, $password, $baseDatos);
+$sql = "SELECT marca, tipo, disponibilidad, descripcion FROM muebles WHERE tipo LIKE '%".$_GET['tipo']."%'";
+$resultado = mysqli_query($conn, $sql);
+
+header("Content-Type: text/xml");
+header('Cache-Control: no-cache, must-revalidate');
+
+echo '<?xml version="1.0" encoding="utf-8"?>
+<MUEBLES>';
+
+while($row = mysqli_fetch_array($resultado)){
+    echo "<MUEBLE>";
+    echo "<MARCA>". $row['marca'] ."</MARCA>";
+    echo "<TIPO>". $row['tipo'] ."</TIPO>";
+    echo "<DISPONIBILIDAD>". $row['disponibilidad'] ."</DISPONIBILIDAD>";
+    echo "<DESCRIPCION>". $row['descripcion'] ."</DESCRIPCION>";
+    echo "</MUEBLE>";
+}
+echo "</MUEBLES>";

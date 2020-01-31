@@ -45,10 +45,10 @@ function realizarPeticionSincronaXML(){
 
     miXHR = new objetoXHR();
 
-    miXHR.open("GET", "datosBusqueda.php?tipo="+tipo, false);
-    miXHR.setRequestHeader("Content-Type", "text/xml;charset=utf-8");
+    miXHR.open("GET", "datosBusqueda.php"+tipo, false);
+    miXHR.setRequestHeader("Content-Type", "text/xml");
     miXHR.onreadystatechange = comprobarEstadoPeticion;
-    miXHR.send();
+    miXHR.send(null);
 }
 
 function tratarResultadoXML(textoXMLRespuesta){
@@ -60,7 +60,7 @@ function tratarResultadoXML(textoXMLRespuesta){
     // En la variable salida compondremos el código HTML de la tabla a imprimir.
     let salida="<table border='1'><tr><th>MARCA</th><th>TIPO</th><th>DISPONIBILIDAD</th><th>DESCRIPCION</th></tr>";
 
-    // Hacemos un bucle para recorrer todos los elementos CD.
+    // Hacemos un bucle para recorrer todos los elementos.
     for (let i=0;i<muebles.length;i++){
         salida+="<tr>";
 
