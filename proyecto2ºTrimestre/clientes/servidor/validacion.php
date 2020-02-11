@@ -27,12 +27,9 @@ function validarApellido($apellido,$nombre){
 
 function validarProducto($producto){
     $errores = array();
-    if($producto === "") {
-    $errores[] = "El id del producto esta vacio";
-    }else{
-    if (!preg_match("/[0-9 ]$/",$producto)) {
-        $errores[] = "El id del producto tiene que ser positivo";
-    }
+    if($producto === "0") {
+    $errores[] = "El producto esta vacio";
+    
 }
 return $errores;
 }

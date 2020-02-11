@@ -40,7 +40,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="mostrarClientes.html">Mostrar Clientes</a>
-                  <a class="dropdown-item" href="crearCliente.html">Crear Cliente</a>
+                  <a class="dropdown-item" href="crearCliente.php">Crear Cliente</a>
                   <a class="dropdown-item" href="editarCliente.html">Editar Cliente</a>
                   <a class="dropdown-item" href="eliminarCliente.php">Eliminar Cliente</a>
                 </div>
