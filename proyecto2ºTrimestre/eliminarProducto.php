@@ -72,7 +72,9 @@
                 <td><?php echo $mueble["tipo"]; ?></td>
                    <td><?php echo $mueble["tamanio"]; ?></td>
                    <td><?php echo $mueble["descripcion"]; ?></td>
-                   <td><?php echo number_format($mueble["precio"]); ?></td>
+                   <td><?php 
+                        $precio = $mueble["precio"];
+                        echo number_format($precio, 2); ?></td>
                    <td><button data-idEliminar="<?php echo $mueble["id"]; ?>" data-accion="eliminar">Eliminar</button></td>
                </tr>    
                <?php
