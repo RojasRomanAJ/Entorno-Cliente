@@ -86,7 +86,7 @@
 
                     <label for="producto">Seleccione producto deseado</label>
                     <p></p>
-                    <select name="" id="producto">
+                    <select name="" id="producto" onchange="validarProducto()">
                         <option value="0">Seleccione</option>
                     <?php 
                         $query = $mysqli -> query ("SELECT * FROM muebles");
@@ -96,6 +96,7 @@
                         
                     ?>
                     </select>
+                    
                     <p></p>
 
                     <label class="form-check-label"> Terminos y condiciones </label>
