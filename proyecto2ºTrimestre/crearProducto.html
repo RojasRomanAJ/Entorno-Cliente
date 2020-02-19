@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="img/índice.png" sizes="32x32">
     <title>Todo mueble</title>
 </head>
 <body>
+    <div id="spinner" class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">
             <img src="img/índice.png" width="30" height="30" class="d-inline-block align-top" alt="inicio">
@@ -20,14 +25,8 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-hidden="true" aria-expanded="false">
-                Búsquedas
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="busquedaProductos.html">Mostrar Productos</a>
-                <a class="dropdown-item" href="busquedaClientes.html">Mostrar Clientes</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="busquedaProductos.html">Búsqueda de Productos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,9 +53,86 @@
           </ul>
         </div>
       </nav>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      <div class="container">
+        <div class="row">
+            <form id="formulario" onsubmit ="validarFormulario()">
+            <div id="spinner" class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+            </div>
+                
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" onchange="validarNombre()">
+                    <div class="error bg-danger"></div>
+                  
+                    <p></p>
+                    
+                    <label for="tipo">Tipo</label>
+                    <select name="tipo" id="tipo" onchange="validarTipo()">
+                      <option value="0">Seleccione...</option>
+                      <option value="silla">silla</option>
+                      <option value="mesa">mesa</option>
+                      <option value="armario">armario</option>
+                      <option value="divan">divan</option>
+                      <option value="balda">balda</option>
+                      <option value="lampara">lampara</option>
+                    </select>
+                    <div class="error bg-danger"></div>
+
+
+                    <label for="tamanio">Tamaño</label>
+                    <select name="tamanio" id="tamanio" onchange="validarTamanio()">
+                        <option value="0">Seleccione...</option>
+                        <option value="pequenio">pequeño</option>
+                        <option value="mediano">mediano</option>
+                        <option value="grande">grande</option>
+                    </select>
+                    <div class="error bg-danger"></div>
+
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" onchange="validarDescripcion()"></textarea>
+                    <div class="error bg-danger"></div>
+
+                    <label for="precio">Precio</label>
+                    <input type="text" class="form-control" id="precio" onchange="validarPrecio()">
+                    <div class="error bg-danger"></div>
+
+                    <p></p>
+    
+                <button type="submit" class="btn btn-primary">Enviar</button>
+    
+                <div id="resultado"></div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="modal" data-backdrop="static">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+    
+                            <div class="modal-header">
+                                
+                                <h5 class="modal-title" id="exampleModalLabel">Creando</h5>
+                            </div>
+    
+                            <div class="modal-body">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated w-100 bg-info" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<script src="muebles/js/validador.js" defer></script>
+
+<link rel="stylesheet" href="muebles/css/styles.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
+		
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
