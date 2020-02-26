@@ -54,8 +54,10 @@
           </ul>
         </div>
       </nav>
-      
-<?php require_once 'clientes/servidor/datosMYSQL.php';  
+  
+<?php 
+  require_once 'configuracion/conexion.php';
+  require_once 'clientes/servidor/datosClientes.php';   
 ?>
    <table class="table">
      <thead>

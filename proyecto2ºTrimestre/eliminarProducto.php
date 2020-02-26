@@ -50,7 +50,12 @@
         </div>
       </nav>
 
-      <?php require_once 'muebles/servidor/datosMueble.php'; ?>
+      <?php
+      
+      require_once 'configuracion/conexion.php';
+      require_once 'muebles/servidor/datosMueble.php'; 
+      
+      ?>
 
       <table class="table">
         <thead>

@@ -19,7 +19,7 @@ function mostrarModalEliminar(idEliminar){
 function eliminarCliente(idEliminar){
     let form = new FormData();
     form.append("id",idEliminar);
-    fetch("clientes/servidor/eliminarCliente.php",{
+    fetch("clientes/servidor/eliminarClientes.php",{
         method:"POST",
         body:form
     }).then(function(){
