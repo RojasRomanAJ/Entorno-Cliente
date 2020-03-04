@@ -12,8 +12,8 @@ jquery->busquedaClientes(clientes/js/filtroClientes.js)Tiempo:2h
 Antonio Jesus Rojas Roman
 XHR->
 
-fetch->eliminarProductos()Tiempo:3h
+fetch->eliminarProductos(muebles/js/eliminarProducto.js)Tiempo:3h
  
 
-jquery->busquedaProducto()Tiempo:2h
-	crearproducto()Tiempo:3h
+jquery->busquedaProducto(muebles/js/filtroMuebles.js)Tiempo:2h
+	crearproducto(muebles/js/validador.js)Tiempo:3h
