@@ -53,56 +53,84 @@
       <?php
       
       require_once 'configuracion/conexion.php';
-      require_once 'muebles/servidor/datosMueble.php'; 
+      require_once 'muebles/servidor/mostrarMuebleEditar.php'; 
       
       ?>
 
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Tamaño</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
         <?php
            while($mueble = $muebles->fetch_assoc()) {
                ?>
-               <tr data-idMueble="<?php echo $mueble["id"]; ?>">
-                <td><?php echo $mueble["nombre"]; ?></td>
-                <td><?php echo $mueble["tipo"]; ?></td>
-                   <td><?php echo $mueble["tamanio"]; ?></td>
-                   <td><?php echo $mueble["descripcion"]; ?></td>
-                   <td><?php 
-                        $precio = $mueble["precio"];
-                        echo number_format($precio, 2); ?></td>
-                   <td><button data-idEliminar="<?php echo $mueble["id"]; ?>" data-accion="eliminar">Eliminar</button></td>
-                   <td><a href="editarProducto.php?idMueble=<?php echo $mueble["id"]; ?>" >Editar</a></td>
-               </tr>    
+            <div class="container">
+                <div class="row">
+                <form id="formulario" onsubmit ="validarFormulario()">
+                <div id="spinner" class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+                
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" onchange="validarNombre()" value="<?php echo $mueble["nombre"]; ?>">
+                    <div class="error bg-danger"></div>
+                  
+                    <p></p>
+                    
+                    <label for="tipo">Tipo</label>
+                    <select name="tipo" id="tipo" onchange="validarTipo()" >
+                      <option value="0">Seleccione...</option>
+                      <option value="silla" <?php if($mueble["tipo"] == "silla"){echo "selected";} ?> >silla</option>
+                      <option value="mesa" <?php if($mueble["tipo"] == "mesa"){echo "selected";} ?> >mesa</option>
+                      <option value="armario" <?php if($mueble["tipo"] == "armario"){echo "selected";} ?>>armario</option>
+                      <option value="divan" <?php if($mueble["tipo"] == "divan"){echo "selected";} ?>>divan</option>
+                      <option value="balda" <?php if($mueble["tipo"] == "balda"){echo "selected";} ?>>balda</option>
+                      <option value="lampara" <?php if($mueble["tipo"] == "lampara"){echo "selected";} ?>>lampara</option>
+                    </select>
+                    <div class="error bg-danger"></div>
+
+
+                    <label for="tamanio">Tamaño</label>
+                    <select name="tamanio" id="tamanio" onchange="validarTamanio()" value="<?php echo $mueble["tamanio"]; ?>">
+                        <option value="0">Seleccione...</option>
+                        <option value="pequenio">pequeño</option>
+                        <option value="mediano">mediano</option>
+                        <option value="grande">grande</option>
+                    </select>
+                    <div class="error bg-danger"></div>
+
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" onchange="validarDescripcion()" value="<?php echo $mueble["descripcion"]; ?>"></textarea>
+                    <div class="error bg-danger"></div>
+
+                    <label for="precio">Precio</label>
+                    <input type="text" class="form-control" id="precio" onchange="validarPrecio()" value="<?php echo $mueble["precio"]; ?>">
+                    <div class="error bg-danger"></div>
+
+                    <p></p>
+    
+                <button type="submit" class="btn btn-primary">Editar</button>
+    
+                <div id="resultado"></div>
+            </form>
+        </div>
+    </div>   
                <?php
            }
        ?>
-        </tbody>
-      </table>
-      <div id="modalEliminar" class="modal" tabindex="-1" role="dialog">
+
+      <div id="modalEditar" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-           <h5 class="modal-title">Eliminar Producto</h5>
+           <h5 class="modal-title">Editar Producto</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
            </button>
          </div>
          <div class="modal-body">
-           <p>¿Estás seguro de eliminar este Producto?</p>
+           <p>¿Estás seguro de editar este Producto?</p>
          </div>
          <div class="modal-footer">
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-           <button id="botonConfirmarEliminar" type="button"  class="btn btn-primary" data-accion="confirmar-eliminar" data-ideliminar="">Confirmar</button>
+           <button id="botonConfirmarEditar" type="button"  class="btn btn-primary" data-accion="confirmar-editar" data-ideliminar="">Confirmar</button>
          </div>
        </div>
      </div>
@@ -111,7 +139,7 @@
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
 
-<script src="muebles/js/eliminarProducto.js" defer></script>
+<script src="muebles/js/editarProducto.js" defer></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

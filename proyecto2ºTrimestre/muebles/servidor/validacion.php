@@ -46,7 +46,7 @@ function validarPrecio($precio){
         $errores[] = "El precio no puede estar vacío";
     } else {
         if (!preg_match("/^[0-9.]{1,}$/",$precio)) {
-            $errores[] = "No se permite precio negativo";
+            $errores[] = "No se permiten letras ni precio negativo";
         }
     }
     return $errores;
