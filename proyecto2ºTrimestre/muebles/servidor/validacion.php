@@ -42,11 +42,12 @@ function validarDescripcion($descripcion){
 
 function validarPrecio($precio){
     $errores = array();
-    if($precio === "0"){
+    if($precio === ""){
         $errores[] = "El precio no puede estar vacío";
     } else {
-        if (!preg_match("/^[0-9]+\.+[0-9]{2,}$/",$precio)) {
+        if (!preg_match("/^[0-9.]{1,}$/",$precio)) {
             $errores[] = "No se permite precio negativo";
         }
     }
+    return $errores;
 }
