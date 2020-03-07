@@ -53,12 +53,14 @@
       <?php
       
       require_once 'configuracion/conexion.php';
-      require_once 'muebles/servidor/mostrarMuebleEditar.php'; 
+      require_once 'muebles/servidor/mostrarMuebleEditar.php';
       
       ?>
-
+      
         <?php
-           while($mueble = $muebles->fetch_assoc()) {
+    
+            $mueble = $mueble->fetch_assoc();
+           if($mueble){
                ?>
             <div class="container">
                 <div class="row">
@@ -67,7 +69,6 @@
                 <div class="dot1"></div>
                 <div class="dot2"></div>
             </div>
-                
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" onchange="validarNombre()" value="<?php echo $mueble["nombre"]; ?>">
                     <div class="error bg-danger"></div>
@@ -83,6 +84,7 @@
                       <option value="divan" <?php if($mueble["tipo"] == "divan"){echo "selected";} ?>>divan</option>
                       <option value="balda" <?php if($mueble["tipo"] == "balda"){echo "selected";} ?>>balda</option>
                       <option value="lampara" <?php if($mueble["tipo"] == "lampara"){echo "selected";} ?>>lampara</option>
+                      <option value="sofa" <?php if($mueble["tipo"] == "sofa"){echo "selected";} ?>>sofa</option>
                     </select>
                     <div class="error bg-danger"></div>
 
@@ -90,14 +92,14 @@
                     <label for="tamanio">Tamaño</label>
                     <select name="tamanio" id="tamanio" onchange="validarTamanio()" value="<?php echo $mueble["tamanio"]; ?>">
                         <option value="0">Seleccione...</option>
-                        <option value="pequenio">pequeño</option>
-                        <option value="mediano">mediano</option>
-                        <option value="grande">grande</option>
+                        <option value="pequenio" <?php if($mueble["tamanio"] == "pequenio"){echo "selected";} ?>>pequeño</option>
+                        <option value="mediano" <?php if($mueble["tamanio"] == "mediano"){echo "selected";} ?>>mediano</option>
+                        <option value="grande" <?php if($mueble["tamanio"] == "grande"){echo "selected";} ?>>grande</option>
                     </select>
                     <div class="error bg-danger"></div>
 
                     <label for="descripcion">Descripción</label>
-                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" onchange="validarDescripcion()" value="<?php echo $mueble["descripcion"]; ?>"></textarea>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" onchange="validarDescripcion()"><?php echo $mueble["descripcion"]; ?></textarea>
                     <div class="error bg-danger"></div>
 
                     <label for="precio">Precio</label>
@@ -106,7 +108,7 @@
 
                     <p></p>
     
-                <button type="submit" class="btn btn-primary">Editar</button>
+                    <button data-idEditar="<?php echo $mueble["id"]; ?>" data-accion="editar" class="btn btn-primary">Editar</button>
     
                 <div id="resultado"></div>
             </form>
@@ -130,16 +132,18 @@
          </div>
          <div class="modal-footer">
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-           <button id="botonConfirmarEditar" type="button"  class="btn btn-primary" data-accion="confirmar-editar" data-ideliminar="">Confirmar</button>
+           <button id="botonConfirmarEditar" type="button"  class="btn btn-primary" data-accion="confirmar-editar" data-ideditar="">Confirmar</button>
          </div>
        </div>
      </div>
    </div>
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
 
-<script src="muebles/js/editarProducto.js" defer></script>
+<script src="muebles/js/editarProducto.js"></script>
+<script src="muebles/js/validadorEditar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

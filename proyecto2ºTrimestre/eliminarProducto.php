@@ -60,6 +60,7 @@
       <table class="table">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Tipo</th>
                 <th>Tamaño</th>
@@ -73,6 +74,7 @@
            while($mueble = $muebles->fetch_assoc()) {
                ?>
                <tr data-idMueble="<?php echo $mueble["id"]; ?>">
+                <td><?php echo $mueble["id"]; ?></td>
                 <td><?php echo $mueble["nombre"]; ?></td>
                 <td><?php echo $mueble["tipo"]; ?></td>
                    <td><?php echo $mueble["tamanio"]; ?></td>
@@ -80,8 +82,8 @@
                    <td><?php 
                         $precio = $mueble["precio"];
                         echo number_format($precio, 2); ?></td>
-                   <td><button data-idEliminar="<?php echo $mueble["id"]; ?>" data-accion="eliminar">Eliminar</button></td>
-                   <td><a href="editarProducto.php?idMueble=<?php echo $mueble["id"]; ?>" >Editar</a></td>
+                   <td><button data-idEliminar="<?php echo $mueble["id"]; ?>" data-accion="eliminar" class="btn btn-primary">Eliminar</button></td>
+                   <td><a href="editarProducto.php?id=<?php echo $mueble["id"]; ?>" class="btn btn-primary">Editar</a></td>
                </tr>    
                <?php
            }
