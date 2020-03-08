@@ -14,6 +14,6 @@ $conn = mysqli_connect($servidor, $usuario, $password, $baseDatos);
 
 // INSETAMOS LOS DATOS QUE HEMOS AÑADIDO EN EL FORMULARIO. Recordar incluir siempre el id aunque este vacio ya que se auto incrementa pero tiene que estar para que el comando insert se realice
 
-$sql =  "INSERT INTO `clientes`(`id`, `Nombre`, `Apellidos`, `Producto`) VALUES ('', '$nombre', '$apellido', '$producto')";
+$sql =  "INSERT INTO `clientes`(`id`, `nombre`, `apellidos`, `producto`) VALUES ('', '$nombre', '$apellido', '$producto')";
 $result=mysqli_query($conn,$sql);
 ?>

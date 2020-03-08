@@ -9,8 +9,8 @@
     <title>Todo mueble</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
             <img src="img/índice.png" width="30" height="30" class="d-inline-block align-top" alt="inicio">
             Todo Mueble
         </a>
@@ -25,7 +25,7 @@
                 Búsquedas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="busquedaProductos.html">Mostrar Productos</a>
+                <a class="dropdown-item" href="busquedaProductos.html">Mostrar Productos</a>
                 <a class="dropdown-item" href="busquedaClientes.html">Mostrar Clientes</a>
               </div>
             </li>
@@ -34,10 +34,9 @@
                 Administración Productos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="mostrarProductos.html">Mostrar Producto</a>
+                <a class="dropdown-item" href="mostrarProductos.html">Mostrar Productos</a>
                 <a class="dropdown-item" href="crearProducto.html">Crear Producto</a>
-                <a class="dropdown-item" href="editarProducto.html">Editar Producto</a>
-                <a class="dropdown-item" href="eliminarProducto.php">Eliminar Producto</a>
+                <a class="dropdown-item" href="eliminarProducto.php">Eliminar/Editar Producto</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -47,8 +46,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="mostrarClientes.html">Mostrar Clientes</a>
                   <a class="dropdown-item" href="crearCliente.php">Crear Cliente</a>
-                  <a class="dropdown-item" href="editarCliente.html">Editar Cliente</a>
-                  <a class="dropdown-item" href="eliminarCliente.php">Eliminar Cliente</a>
+                  <a class="dropdown-item" href="eliminarCliente.php">Eliminar/Editar Cliente</a>
                 </div>
               </li>
           </ul>
@@ -62,6 +60,7 @@
    <table class="table">
      <thead>
        <tr>
+         <th scope="col">ID</th>
          <th scope="col">Nombre</th>
          <th scope="col">Apellidos</th>
          <th scope="col">Producto</th>
@@ -73,10 +72,12 @@
            while($cliente = $clientes->fetch_assoc()) {
                ?>
                <tr data-idCliente="<?php echo $cliente["id"]; ?>">
+                   <td><?php echo $cliente["id"]; ?></td>
                    <td><?php echo $cliente["nombre"]; ?></td>
                    <td><?php echo $cliente["apellidos"]; ?></td>
                    <td><?php echo $cliente["producto"]; ?></td>
-                   <td><button data-idEliminar="<?php echo $cliente["id"]; ?>" data-accion="eliminar">Eliminar</button></td>
+                   <td><button data-idEliminar="<?php echo $cliente["id"]; ?>" data-accion="eliminar" class="btn btn-primary">Eliminar</button></td>
+                   <td><a href="editarCliente.php?id=<?php echo $cliente["id"]; ?>" class="btn btn-primary">Editar</a></td>
                </tr>    
                <?php
            }

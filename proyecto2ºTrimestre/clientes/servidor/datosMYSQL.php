@@ -1,9 +1,6 @@
 <?php
-$servidor = "localhost";
-$usuario = "root";
-$password = "";
-$baseDatos = "todomuebles";
- 
+
+require_once '../../configuracion/conexion.php'; 
 // Creamos la conexion
 $conexion = new mysqli($servidor, $usuario, $password,$baseDatos);
 $conexion->set_charset("utf8");

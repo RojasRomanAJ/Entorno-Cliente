@@ -9,8 +9,8 @@
     <title>Todo mueble</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
             <img src="img/índice.png" width="30" height="30" class="d-inline-block align-top" alt="inicio">
             Todo Mueble
         </a>
@@ -25,7 +25,7 @@
                 Búsquedas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="busquedaProductos.html">Mostrar Productos</a>
+                <a class="dropdown-item" href="busquedaProductos.html">Mostrar Productos</a>
                 <a class="dropdown-item" href="busquedaClientes.html">Mostrar Clientes</a>
               </div>
             </li>
@@ -34,10 +34,9 @@
                 Administración Productos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="mostrarProductos.html">Mostrar Producto</a>
+                <a class="dropdown-item" href="mostrarProductos.html">Mostrar Productos</a>
                 <a class="dropdown-item" href="crearProducto.html">Crear Producto</a>
-                <a class="dropdown-item" href="editarProducto.html">Editar Producto</a>
-                <a class="dropdown-item" href="eliminarProducto.php">Eliminar Producto</a>
+                <a class="dropdown-item" href="eliminarProducto.php">Eliminar/Editar Producto</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -47,55 +46,64 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="mostrarClientes.html">Mostrar Clientes</a>
                   <a class="dropdown-item" href="crearCliente.php">Crear Cliente</a>
-                  <a class="dropdown-item" href="editarCliente.html">Editar Cliente</a>
-                  <a class="dropdown-item" href="eliminarCliente.php">Eliminar Cliente</a>
+                  <a class="dropdown-item" href="eliminarCliente.php">Eliminar/Editar Cliente</a>
                 </div>
               </li>
           </ul>
         </div>
       </nav>
       
-<?php require_once 'clientes/servidor/datosMYSQL.php';  
-?>
-   <table class="table">
-     <thead>
-       <tr>
-         <th scope="col">Nombre</th>
-         <th scope="col">Apellidos</th>
-         <th scope="col">Producto</th>
-         <th scope='col'>Acciones</th>
-       </tr>
-       </thead>
-     <tbody>
-       <?php
-           while($cliente = $clientes->fetch_assoc()) {
-               ?>
-               <tr data-idCliente="<?php echo $cliente["id"]; ?>">
-                   <td><?php echo $cliente["nombre"]; ?></td>
-                   <td><?php echo $cliente["apellidos"]; ?></td>
-                   <td><?php echo $cliente["producto"]; ?></td>
-                   <td><button data-idEliminar="<?php echo $cliente["id"]; ?>" data-accion="eliminar">Eliminar</button></td>
-               </tr>    
-               <?php
-           }
-       ?>
+    <?php
+      require_once 'configuracion/conexion.php';
+      require_once 'clientes/servidor/mostrarClienteEditar.php';
+    ?>
+
+    <?php 
+      $cliente = $cliente->fetch_assoc();
+      if($cliente){
+    ?>       
+       <div class="container mt-5">
+        <div class="row">
+            <form id="formulario" onsubmit ="validarFormulario()">
+            <div id="spinner" class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+            </div>
+                
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" onchange="validarNombre()" value="<?php echo $cliente["nombre"] ?>">
+                    <div class="error bg-danger"></div>
+                    <p></p>
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellidos" onchange="validarApellido()" value="<?php echo $cliente["apellidos"] ?>">
+                    <div class="error bg-danger"></div>    
+                    <p></p>
+                <button data-idEditar="<?php echo $cliente["id"] ?>" data-accion="editar" class="btn btn-primary">Editar</button>
+                <a href="eliminarCliente.php" class="btn btn-danger">Volver</a>
+                <div id="resultado"></div>
+            </form>
+        </div>
+    </div>
+    <?php
+      }
+    ?>
    </tbody>
    </table>
-   <div id="modalEliminar" class="modal" tabindex="-1" role="dialog">
+   <div id="modalEditar" class="modal" tabindex="-1" role="dialog">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
-           <h5 class="modal-title">Eliminar Cliente</h5>
+           <h5 class="modal-title">Editar Cliente</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
            </button>
          </div>
          <div class="modal-body">
-           <p>¿Estás seguro de eliminar este Cliente?</p>
+           <p>¿Estás seguro de editar este Cliente?</p>
          </div>
          <div class="modal-footer">
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-           <button id="botonConfirmarEliminar" type="button"  class="btn btn-primary" data-accion="confirmar-eliminar" data-ideliminar="">Confirmar</button>
+           <button id="botonConfirmarEditar" type="button"  class="btn btn-primary" data-accion="confirmar-editar" data-ideliminar="">Confirmar</button>
          </div>
        </div>
      </div>
@@ -106,7 +114,9 @@
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
-<script src="clientes/js/eliminar.js" defer></script>
+
+<script src="clientes/js/editarCliente.js"></script>
+<script src="clientes/js/validadorEditar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
