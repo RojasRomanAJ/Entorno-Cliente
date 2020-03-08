@@ -9,7 +9,7 @@ Este proyecto consiste en realizar principalmente un CRUD y otras funcionalidade
 **Máximo Madrona Durán**
 * XHR
     * **mostrarClientes(clientes/js/mostrarClientes.js)** Tiempo: 2h :watch:
-    * **petición 2 (pendiente)** Tiempo: Xh :watch:
+    * **busquedaTamaño (muebles/js/busquedaTamanio.js)** Tiempo: 3h :watch:
 
 * Fetch
     * **eliminarClientes(clientes/js/eliminar.js)** Tiempo: 2h :watch:
@@ -22,7 +22,7 @@ Este proyecto consiste en realizar principalmente un CRUD y otras funcionalidade
 **Antonio Jesús Rojas Román**
 * XHR
     * **mostrarProductos(muebles/js/mostrarProductos.js)** Tiempo: 2h :watch:
-    * **petición 2 (pendiente)** Tiempo: Xh :watch:
+    * **busquedaTipo (muebles/js/busquedaTipo.js)** Tiempo: 2h :watch:
 
 * Fetch
     * **eliminarProductos(muebles/js/eliminarProducto.js)** Tiempo: 3h :watch:
