@@ -24,7 +24,7 @@ Este proyecto consiste en realizar principalmente un CRUD y otras funcionalidade
 
 * Jquery
     * busquedaClientes(clientes/js/filtroClientes.js):watch: Tiempo: 2h
-    * crearCliente(clientes/js/validacion.js):watcgh: Tiempo: 3h
+    * crearCliente(clientes/js/validacion.js):watch: Tiempo: 3h
 
 **Antonio Jesús Rojas Román**
 * XHR
